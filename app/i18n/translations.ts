@@ -220,6 +220,7 @@ export const translations = {
       bathCount: 'Kylpyhuoneiden määrä',
       kitchenLabel: 'Keittiön siivous',
       formService: 'Palvelun tyyppi',
+      formSize: 'Asunnon koko',
       windowLabel: 'Ikkunoiden pesu',
       includeWindows: 'Sisällytä ikkunoiden pesu',
       calculateButton: 'Laske hinta',
