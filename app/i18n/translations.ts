@@ -143,6 +143,27 @@ export const translations = {
       }
     ],
 
+    // FAQ Component
+    faqTitle: 'Usein kysytyt kysymykset',
+    faqQuestions: [
+      {
+        q: 'Miten voin tilata siivouspalvelun?',
+        a: 'Voit tilata siivouspalvelun soittamalla meille, lähettämällä sähköpostia tai täyttämällä yhteydenottolomakkeen verkkosivuillamme.'
+      },
+      {
+        q: 'Kuinka paljon siivouspalvelu maksaa?',
+        a: 'Siivouspalvelumme hinta määräytyy asunnon koon, siivoustyypin ja tarvittavan työn määrän mukaan. Käytä verkkosivullamme olevaa hintalaskuria saadaksesi arvion tai ota yhteyttä tarkkaa tarjousta varten.'
+      },
+      {
+        q: 'Voiko siivouksesta saada kotitalousvähennyksen?',
+        a: 'Kyllä, siivouspalvelumme oikeuttavat kotitalousvähennykseen. Voit hyödyntää jopa 40% verovähennyksen palvelun työkustannuksista.'
+      },
+      {
+        q: 'Millä alueilla toimitte?',
+        a: 'Toimimme pääkaupunkiseudulla (Helsinki, Espoo, Vantaa, Kauniainen) sekä lähikunnissa.'
+      }
+    ],
+
     // Blog translations
     blog: 'Blogi',
     blogDesc: 'Lue puhtauteen ja siivoukseen liittyviä artikkeleita',
@@ -198,6 +219,7 @@ export const translations = {
       monthly: 'Kuukausittainen',
       bathCount: 'Kylpyhuoneiden määrä',
       kitchenLabel: 'Keittiön siivous',
+      formService: 'Palvelun tyyppi',
       windowLabel: 'Ikkunoiden pesu',
       includeWindows: 'Sisällytä ikkunoiden pesu',
       calculateButton: 'Laske hinta',
