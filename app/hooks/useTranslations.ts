@@ -5,7 +5,8 @@ export const useTranslations = () => {
 
   const t = (key: string) => {
     if (!translations) return '';
-    return translations[key] || key;
+    // Use a type assertion to allow accessing translations with a string key
+    return (translations as any)[key] || key;
   };
 
   return { t };
