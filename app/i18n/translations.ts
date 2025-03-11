@@ -100,6 +100,7 @@ export const translations = {
     ourPromiseDesc: 'Tavoitteemme on ylittää asiakkaidemme odotukset jokaisella siivouskerralla. Tarjoamme 100% tyytyväisyystakuun kaikille palveluillemme.',
     readyToStartDesc: 'Ota yhteyttä ja pyydä tarjous - teemme kodistasi tai työpaikastasi puhtaamman ja viihtyisämmän!',
     faq: 'Usein kysytyt kysymykset',
+    faqTitle: 'Usein kysytyt kysymykset',
     faqQuestions: [
       {
         q: 'Minkä tyyppisiä siivouspalveluja tarjoatte?',
@@ -109,43 +110,6 @@ export const translations = {
         q: 'Ovatko siivoustuotteenne turvallisia lapsille ja lemmikeille?',
         a: 'Kyllä, asetamme etusijalle läheistesi ja ympäristön turvallisuuden. Käytämme ekologisia ja myrkyttömiä siivoustuotteita, jotka ovat turvallisia lapsille ja lemmikeille.'
       },
-      {
-        q: 'Miten määrittelette siivouspalvelujen hinnan?',
-        a: 'Siivouspalvelun hinta riippuu erilaisista tekijöistä, kuten tilan koosta, tarvittavasta siivouksen laajuudesta ja mahdollisista lisäpalveluista. Tarjoamme henkilökohtaisia hintatarjouksia perusteellisen siivoustarpeiden arvioinnin perusteella.'
-      },
-      {
-        q: 'Onko siivoojanne koulutettuja ja vakuutettuja?',
-        a: 'Ehdottomasti. Siivoojamme ovat korkeasti koulutettuja ammattilaisia, jotka ovat käyneet läpi perusteelliset taustatarkastukset. He ovat vakuutettuja ja täysin varusteltuja tarjoamaan poikkeuksellisia siivouspalveluja suurella ammattitaidolla.'
-      },
-      {
-        q: 'Voinko luottaa siivoojiinne kotiini tai toimistooni?',
-        a: 'Luottamus on meille ensiarvoisen tärkeää. Valitsemme siivoojamme huolellisesti varmistaaksemme, että he ovat luotettavia ja luotettavia henkilöitä. Voit olla huoleti, sillä kotisi tai toimistosi on turvallisissa käsissä.'
-      },
-      {
-        q: 'Tarvitsenko itse siivousvälineitä ja -tarvikkeita?',
-        a: 'Käytämme aina kotisi imuria, moppi ja ämpäri siivouspalveluissamme. Kuitenkin varmistaaksemme täydellisen tyytyväisyyden siivoustulokseen, tuomme mukanamme omat ekologiset siivousvälineet. Näiden tarvikkeiden hinta, joka on 5 €, sisältyy jo palvelumaksuun.'
-      },
-      {
-        q: 'Millä alueilla palvelette?',
-        a: 'Palvelemme ylpeänä Helsinkiä, Espoota ja Vantaata tällä hetkellä. Jos et ole varma, kuuluuko asuinalueesi toiminta-alueellemme, olethan yhteydessä meihin varmistaaksesi asian.'
-      },
-      {
-        q: 'Miten voin varata siivouspalvelun?',
-        a: 'Siivouspalvelun varaaminen on helppoa. Voit ottaa meihin yhteyttä verkkosivustomme, sähköpostin tai puhelimen kautta. Ystävällinen tiimimme auttaa sinua valitsemaan sopivan päivän ja ajan siivousajanvaraukseesi.'
-      },
-      {
-        q: 'Entä jos tarvitsen siivouspalvelun uudelleen aikatauluttamista tai peruuttamista?',
-        a: 'Ymmärrämme, että aikataulut voivat muuttua. Jos tarvitset siivouspalvelun uudelleenaikatauluttamista tai peruuttamista, ilmoita siitä meille vähintään 3 päivää etukäteen, ja olemme iloisia järjestääksesi asian tarpeidesi mukaan.'
-      },
-      {
-        q: 'Entä jos minulla on erityisiä ohjeita tai tiettyjä alueita, joihin haluan siivoojien keskittyvän?',
-        a: 'Arvostamme avointa viestintää asiakkaidemme kanssa. Voit antaa meille erityisiä ohjeita tai korostaa tiettyjä alueita, joihin haluat siivoojiemme keskittyvän siivouskäynnilläsi. Tiimimme räätälöi siivousprosessin vastaamaan tarpeitasi.'
-      }
-    ],
-
-    // FAQ Component
-    faqTitle: 'Usein kysytyt kysymykset',
-    faqQuestions: [
       {
         q: 'Miten voin tilata siivouspalvelun?',
         a: 'Voit tilata siivouspalvelun soittamalla meille, lähettämällä sähköpostia tai täyttämällä yhteydenottolomakkeen verkkosivuillamme.'
@@ -161,6 +125,10 @@ export const translations = {
       {
         q: 'Millä alueilla toimitte?',
         a: 'Toimimme pääkaupunkiseudulla (Helsinki, Espoo, Vantaa, Kauniainen) sekä lähikunnissa.'
+      },
+      {
+        q: 'Entä jos minulla on erityisiä ohjeita tai tiettyjä alueita, joihin haluan siivoojien keskittyvän?',
+        a: 'Arvostamme avointa viestintää asiakkaidemme kanssa. Voit antaa meille erityisiä ohjeita tai korostaa tiettyjä alueita, joihin haluat siivoojiemme keskittyvän siivouskäynnilläsi. Tiimimme räätälöi siivousprosessin vastaamaan tarpeitasi.'
       }
     ],
 
