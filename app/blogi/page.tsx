@@ -1,28 +1,17 @@
-'use client';
-
-import Link from 'next/link';
-import Image from 'next/image';
-import { useLanguage } from '../context/LanguageContext';
-import { blogs } from '../data/blogs';
+import Link from "next/link";
+import Image from "next/image";
+import { blogs } from "../data/blogs";
 
 export default function BlogPage() {
-  const { translations } = useLanguage();
-
-  if (!translations) {
-    return null;
-  }
-
   return (
     <main className="pt-16">
       {/* Blog Hero Section */}
       <section className="bg-[#27ae60] text-white py-24">
         <div className="max-w-6xl mx-auto px-4">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              {translations.blog}
-            </h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Blogi</h1>
             <p className="text-xl opacity-90">
-              {translations.blogDesc}
+              Lue puhtauteen ja siivoukseen liittyviä artikkeleita
             </p>
           </div>
         </div>
@@ -46,18 +35,17 @@ export default function BlogPage() {
                     <h3 className="text-xl font-bold mb-2 text-gray-800">
                       {blog.titleFi}
                     </h3>
-                    <p className="text-gray-600 mb-4">
-                      {blog.summaryFi}
-                    </p>
+                    <p className="text-gray-600 mb-4">{blog.summaryFi}</p>
                     <div className="flex justify-between items-center">
                       <span className="text-gray-500 text-sm">
-                        {new Date(blog.date).toLocaleDateString(
-                          'fi-FI',
-                          { year: 'numeric', month: 'long', day: 'numeric' }
-                        )}
+                        {new Date(blog.date).toLocaleDateString("fi-FI", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
                       </span>
                       <span className="text-[#27ae60] font-medium">
-                        {translations.readMore} →
+                        Lue lisää →
                       </span>
                     </div>
                   </div>

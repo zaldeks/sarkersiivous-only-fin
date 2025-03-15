@@ -1,43 +1,41 @@
-'use client';
-
-import Link from 'next/link';
-import { useLanguage } from '../context/LanguageContext';
+import Link from "next/link";
 
 const Footer = () => {
-  const { translations } = useLanguage();
-
-  if (!translations) {
-    return null;
-  }
-
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Navigation Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">
-              {translations.navigation.home}
-            </h3>
+            <h3 className="text-lg font-semibold mb-4">Etusivu</h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/" className="text-gray-400 hover:text-white">
-                  {translations.footer.home}
+                  Etusivu
                 </Link>
               </li>
               <li>
-                <Link href="/tietoa-meista" className="text-gray-400 hover:text-white">
-                  {translations.footer.about}
+                <Link
+                  href="/tietoa-meista"
+                  className="text-gray-400 hover:text-white"
+                >
+                  Tietoa meistä
                 </Link>
               </li>
               <li>
-                <Link href="/palvelut" className="text-gray-400 hover:text-white">
-                  {translations.footer.services}
+                <Link
+                  href="/palvelut"
+                  className="text-gray-400 hover:text-white"
+                >
+                  Palvelut
                 </Link>
               </li>
               <li>
-                <Link href="/ota-yhteytta" className="text-gray-400 hover:text-white">
-                  {translations.footer.contact}
+                <Link
+                  href="/ota-yhteytta"
+                  className="text-gray-400 hover:text-white"
+                >
+                  Ota yhteyttä
                 </Link>
               </li>
             </ul>
@@ -45,18 +43,29 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-white font-medium mb-4">{translations.contactUs}</h3>
+            <h3 className="text-white font-medium mb-4">Ota yhteyttä</h3>
             <ul className="space-y-2">
               <li className="text-gray-400">
-                Puh: <a href="tel:0443296873" className="hover:text-[#27ae60]">044 329 6873</a>
+                Puh:{" "}
+                <a href="tel:0443296873" className="hover:text-[#27ae60]">
+                  044 329 6873
+                </a>
               </li>
               <li className="text-gray-400">
-                Info: <a href="mailto:info@sarkersiivous.fi" className="hover:text-[#27ae60]">
+                Info:{" "}
+                <a
+                  href="mailto:info@sarkersiivous.fi"
+                  className="hover:text-[#27ae60]"
+                >
                   info@sarkersiivous.fi
                 </a>
               </li>
               <li className="text-gray-400">
-                Myynti: <a href="mailto:myynti@sarkersiivous.fi" className="hover:text-[#27ae60]">
+                Myynti:{" "}
+                <a
+                  href="mailto:myynti@sarkersiivous.fi"
+                  className="hover:text-[#27ae60]"
+                >
                   myynti@sarkersiivous.fi
                 </a>
               </li>
@@ -65,11 +74,12 @@ const Footer = () => {
 
           {/* Service Areas */}
           <div>
-            <h3 className="text-white font-medium mb-4">{translations.address}</h3>
+            <h3 className="text-white font-medium mb-4">Palvelualueet</h3>
             <ul className="space-y-2">
-              {translations.serviceAreas.map((city: string, index: number) => (
-                <li key={index} className="text-gray-400">{city}</li>
-              ))}
+              <li className="text-gray-400">Helsinki</li>
+              <li className="text-gray-400">Espoo</li>
+              <li className="text-gray-400">Vantaa</li>
+              <li className="text-gray-400">Kauniainen</li>
             </ul>
           </div>
         </div>
@@ -77,7 +87,10 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
           <div className="text-sm text-gray-500 mt-4">
-            <p>&copy; {new Date().getFullYear()} Sarker Siivous. {translations.allRightsReserved}</p>
+            <p>
+              &copy; {new Date().getFullYear()} Sarker Siivous. Kaikki oikeudet
+              pidätetään
+            </p>
             <p>Y-tunnus: 3360393-2</p>
           </div>
         </div>

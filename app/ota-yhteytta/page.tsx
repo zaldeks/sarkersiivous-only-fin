@@ -1,23 +1,21 @@
-'use client';
+"use client";
 
-import { useLanguage } from '../context/LanguageContext';
-import { useState, useEffect } from 'react';
-import emailjs from '@emailjs/browser';
-import { emailConfig } from '../config/emailjs';
+import { useState, useEffect } from "react";
 
 export default function Contact() {
-  const { translations } = useLanguage();
   const [mounted, setMounted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const [quoteForm, setQuoteForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    details: '',
-    service: 'basic',
-    size: '20-50'
+    name: "",
+    email: "",
+    phone: "",
+    details: "",
+    service: "basic",
+    size: "20-50",
   });
 
   // Handle client-side mounting
@@ -27,15 +25,17 @@ export default function Contact() {
 
   // Calculate time based on service and size
   const calculateTime = (size: string) => {
-    const [minSize, maxSize] = size.split('-').map(s => parseInt(s) || parseInt(size));
+    const [minSize, maxSize] = size
+      .split("-")
+      .map((s) => parseInt(s) || parseInt(size));
     const avgSize = maxSize || minSize;
 
     switch (quoteForm.service) {
-      case 'basic':
+      case "basic":
         return Math.ceil((avgSize / 50) * 2); // 2 hours per 50m²
-      case 'move':
+      case "move":
         return Math.ceil((avgSize / 30) * 3); // 3 hours per 30m²
-      case 'window':
+      case "window":
         return Math.ceil((avgSize / 60) * 1); // 1 hour per 60m²
       default:
         return 2;
@@ -54,81 +54,95 @@ export default function Contact() {
       hours,
       withVAT: Math.round(priceWithVAT),
       withoutVAT: Math.round(priceWithoutVAT),
-      afterDeduction: Math.round(priceAfterDeduction)
+      afterDeduction: Math.round(priceAfterDeduction),
     };
   };
 
   const handleQuoteSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus('idle');
-    setErrorMessage('');
+    setSubmitStatus("idle");
+    setErrorMessage("");
 
     const prices = calculatePrices();
-    const serviceTranslation = quoteForm.service === 'basic' 
-      ? translations.priceCalculator.basicCleaning
-      : quoteForm.service === 'move'
-      ? translations.priceCalculator.moveCleaning
-      : translations.priceCalculator.windowCleaning;
-    
+    const serviceTranslation =
+      quoteForm.service === "basic"
+        ? "Perussiivous"
+        : quoteForm.service === "move"
+        ? "Muuttosiivous"
+        : "Ikkunoiden pesu";
+
     try {
-      const response = await fetch('/api/send', {
-        method: 'POST',
+      const response = await fetch("/api/send", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           name: quoteForm.name,
           email: quoteForm.email,
           phone: quoteForm.phone,
           service: serviceTranslation,
-          size: quoteForm.size + ' m²',
+          size: quoteForm.size + " m²",
           details: quoteForm.details,
-          estimatedHours: `${prices.hours} ${translations.priceCalculator.hours}`,
+          estimatedHours: `${prices.hours} tuntia}`,
           priceWithVAT: `${prices.withVAT} €`,
           priceWithoutVAT: `${prices.withoutVAT} €`,
-          priceAfterDeduction: `${prices.afterDeduction} €`
+          priceAfterDeduction: `${prices.afterDeduction} €`,
         }),
       });
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error || translations.formErrorGeneric);
+        throw new Error(
+          errorData.error ||
+            "Viestin lähetyksessä tapahtui virhe. Yritä myöhemmin uudelleen."
+        );
       }
 
       const data = await response.json();
       if (!data.success) {
-        throw new Error(data.error || translations.formErrorGeneric);
+        throw new Error(
+          data.error ||
+            "Viestin lähetyksessä tapahtui virhe. Yritä myöhemmin uudelleen."
+        );
       }
 
-      setSubmitStatus('success');
+      setSubmitStatus("success");
       setQuoteForm({
-        name: '',
-        email: '',
-        phone: '',
-        details: '',
-        service: 'basic',
-        size: '20-50'
+        name: "",
+        email: "",
+        phone: "",
+        details: "",
+        service: "basic",
+        size: "20-50",
       });
     } catch (error) {
-      console.error('Failed to send email:', error);
-      setSubmitStatus('error');
-      setErrorMessage((error as Error).message || translations.formErrorGeneric);
+      console.error("Failed to send email:", error);
+      setSubmitStatus("error");
+      setErrorMessage(
+        (error as Error).message ||
+          "Viestin lähetyksessä tapahtui virhe. Yritä myöhemmin uudelleen."
+      );
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value } = e.target;
-    setQuoteForm(prev => ({
+    setQuoteForm((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
-  // Wait for client-side hydration and translations
-  if (!mounted || !translations) {
+  // Wait for client-side hydration
+  if (!mounted) {
     return null;
   }
 
@@ -147,10 +161,10 @@ export default function Contact() {
         <div className="relative z-10 h-full flex items-center justify-center">
           <div className="text-center text-white px-4">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              {translations.contactUs}
+              Ota yhteyttä
             </h1>
             <p className="text-xl md:text-2xl mb-8">
-              {translations.contactDesc}
+              Kysy palveluistamme tai pyydä tarjous
             </p>
           </div>
         </div>
@@ -163,8 +177,11 @@ export default function Contact() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Name */}
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                  {translations.formName} <span className="text-red-500">*</span>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Nimi <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -174,14 +191,17 @@ export default function Contact() {
                   value={quoteForm.name}
                   onChange={handleInputChange}
                   className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#27ae60] focus:ring-[#27ae60]"
-                  placeholder={translations.formName}
+                  placeholder="Nimi"
                 />
               </div>
 
               {/* Email */}
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                  {translations.formEmail} <span className="text-red-500">*</span>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Sähköposti <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="email"
@@ -191,14 +211,17 @@ export default function Contact() {
                   value={quoteForm.email}
                   onChange={handleInputChange}
                   className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#27ae60] focus:ring-[#27ae60]"
-                  placeholder={translations.formEmail}
+                  placeholder="Sähköposti"
                 />
               </div>
 
               {/* Phone */}
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                  {translations.formPhone}
+                <label
+                  htmlFor="phone"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Puhelin
                 </label>
                 <input
                   type="tel"
@@ -207,14 +230,17 @@ export default function Contact() {
                   value={quoteForm.phone}
                   onChange={handleInputChange}
                   className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#27ae60] focus:ring-[#27ae60]"
-                  placeholder={translations.formPhone}
+                  placeholder="Puhelin"
                 />
               </div>
 
               {/* Service Type */}
               <div>
-                <label htmlFor="service" className="block text-sm font-medium text-gray-700">
-                  {translations.formService} <span className="text-red-500">*</span>
+                <label
+                  htmlFor="service"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Palvelun tyyppi <span className="text-red-500">*</span>
                 </label>
                 <select
                   id="service"
@@ -224,16 +250,19 @@ export default function Contact() {
                   onChange={handleInputChange}
                   className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#27ae60] focus:ring-[#27ae60]"
                 >
-                  <option value="basic">{translations.priceCalculator.basicCleaning}</option>
-                  <option value="move">{translations.priceCalculator.moveCleaning}</option>
-                  <option value="window">{translations.priceCalculator.windowCleaning}</option>
+                  <option value="basic">Perussiivous</option>
+                  <option value="move">Muuttosiivous</option>
+                  <option value="window">Ikkunoiden pesu</option>
                 </select>
               </div>
 
               {/* Size */}
               <div>
-                <label htmlFor="size" className="block text-sm font-medium text-gray-700">
-                  {translations.formSize} <span className="text-red-500">*</span>
+                <label
+                  htmlFor="size"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Asunnon koko <span className="text-red-500">*</span>
                 </label>
                 <select
                   id="size"
@@ -256,8 +285,11 @@ export default function Contact() {
 
             {/* Additional Details */}
             <div>
-              <label htmlFor="details" className="block text-sm font-medium text-gray-700">
-                {translations.formDetails}
+              <label
+                htmlFor="details"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Lisätiedot
               </label>
               <textarea
                 id="details"
@@ -266,34 +298,36 @@ export default function Contact() {
                 value={quoteForm.details}
                 onChange={handleInputChange}
                 className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#27ae60] focus:ring-[#27ae60]"
-                placeholder={translations.formDetails}
+                placeholder="Lisätiedot"
               />
             </div>
 
             {/* Price Estimate */}
             <div className="bg-gray-50 rounded-lg p-4 space-y-3">
-              <h3 className="font-medium text-gray-900">{translations.priceCalculator.priceEstimator}</h3>
+              <h3 className="font-medium text-gray-900">Hinta-arvio</h3>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-sm text-gray-600">{translations.priceCalculator.estimatedTime}</p>
+                  <p className="text-sm text-gray-600">Arvioitu kesto</p>
                   <p className="text-lg font-medium text-gray-900">
-                    {calculatePrices().hours} {translations.priceCalculator.hours}
+                    {calculatePrices().hours} tuntia
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">{translations.priceCalculator.priceWithVAT}</p>
+                  <p className="text-sm text-gray-600">Hinta (sis. ALV)</p>
                   <p className="text-lg font-medium text-gray-900">
                     {calculatePrices().withVAT} €
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">{translations.priceCalculator.priceWithoutVAT}</p>
+                  <p className="text-sm text-gray-600">Hinta (ALV 0%)</p>
                   <p className="text-lg font-medium text-gray-900">
                     {calculatePrices().withoutVAT} €
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">{translations.priceCalculator.priceAfterDeduction}</p>
+                  <p className="text-sm text-gray-600">
+                    Kotitalousvähennyksen jälkeen
+                  </p>
                   <p className="text-lg font-medium text-[#27ae60]">
                     {calculatePrices().afterDeduction} €
                   </p>
@@ -307,18 +341,19 @@ export default function Contact() {
               disabled={isSubmitting}
               className="w-full bg-[#27ae60] text-white py-3 px-6 rounded-lg hover:bg-[#219a54] transition-colors font-semibold disabled:opacity-50"
             >
-              {isSubmitting ? '...' : translations.formSubmit}
+              {isSubmitting ? "..." : "Lähetä"}
             </button>
 
             {/* Status Messages */}
-            {submitStatus === 'success' && (
+            {submitStatus === "success" && (
               <div className="mt-4 p-4 bg-green-50 text-green-700 rounded-lg">
-                {translations.formSuccess}
+                Kiitos viestistäsi! Olemme sinuun yhteydessä pian.
               </div>
             )}
-            {submitStatus === 'error' && (
+            {submitStatus === "error" && (
               <div className="mt-4 p-4 bg-red-50 text-red-700 rounded-lg">
-                {errorMessage || translations.formErrorGeneric}
+                {errorMessage ||
+                  "Viestin lähetyksessä tapahtui virhe. Yritä myöhemmin uudelleen."}
               </div>
             )}
           </form>

@@ -1,17 +1,11 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useState } from 'react';
-import { useLanguage } from '../context/LanguageContext';
-import Image from 'next/image';
+import Link from "next/link";
+import { useState } from "react";
+import Image from "next/image";
 
 const Navigation = () => {
-  const { translations } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  if (!translations) {
-    return null;
-  }
 
   return (
     <nav className="bg-white shadow-md fixed w-full z-50">
@@ -31,25 +25,40 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             <Link href="/" className="text-gray-700 hover:text-[#27ae60]">
-              {translations.navigation.home}
+              Etusivu
             </Link>
-            <Link href="/tietoa-meista" className="text-gray-700 hover:text-[#27ae60]">
-              {translations.navigation.about}
+            <Link
+              href="/tietoa-meista"
+              className="text-gray-700 hover:text-[#27ae60]"
+            >
+              Tietoa meistä
             </Link>
-            <Link href="/palvelut" className="text-gray-700 hover:text-[#27ae60]">
-              {translations.navigation.services}
+            <Link
+              href="/palvelut"
+              className="text-gray-700 hover:text-[#27ae60]"
+            >
+              Palvelut
             </Link>
-            <Link href="/kotitalousvahennys" className="text-gray-700 hover:text-[#27ae60]">
-              {translations.navigation.taxCredit}
+            <Link
+              href="/kotitalousvahennys"
+              className="text-gray-700 hover:text-[#27ae60]"
+            >
+              Kotitalousvähennys
             </Link>
-            <Link href="/arvolisaton-siivous" className="text-gray-700 hover:text-[#27ae60]">
-              {translations.navigation.vatFree}
+            <Link
+              href="/arvolisaton-siivous"
+              className="text-gray-700 hover:text-[#27ae60]"
+            >
+              Arvonlisäveroton siivous
             </Link>
             <Link href="/blogi" className="text-gray-700 hover:text-[#27ae60]">
-              {translations.navigation.blog}
+              Blogi
             </Link>
-            <Link href="/ota-yhteytta" className="bg-[#27ae60] text-white px-4 py-2 rounded-lg hover:bg-[#219a54] transition-colors">
-              {translations.navigation.contact}
+            <Link
+              href="/ota-yhteytta"
+              className="bg-[#27ae60] text-white px-4 py-2 rounded-lg hover:bg-[#219a54] transition-colors"
+            >
+              Ota yhteyttä
             </Link>
           </div>
 
@@ -84,49 +93,49 @@ const Navigation = () => {
               className="block py-2 text-gray-700 hover:text-[#27ae60]"
               onClick={() => setIsMenuOpen(false)}
             >
-              {translations.navigation.home}
+              Etusivu
             </Link>
             <Link
               href="/tietoa-meista"
               className="block py-2 text-gray-700 hover:text-[#27ae60]"
               onClick={() => setIsMenuOpen(false)}
             >
-              {translations.navigation.about}
+              Tietoa meistä
             </Link>
             <Link
               href="/palvelut"
               className="block py-2 text-gray-700 hover:text-[#27ae60]"
               onClick={() => setIsMenuOpen(false)}
             >
-              {translations.navigation.services}
+              Palvelut
             </Link>
             <Link
               href="/kotitalousvahennys"
               className="block py-2 text-gray-700 hover:text-[#27ae60]"
               onClick={() => setIsMenuOpen(false)}
             >
-              {translations.navigation.taxCredit}
+              Kotitalousvähennys
             </Link>
             <Link
               href="/arvolisaton-siivous"
               className="block py-2 text-gray-700 hover:text-[#27ae60]"
               onClick={() => setIsMenuOpen(false)}
             >
-              {translations.navigation.vatFree}
+              Arvonlisäveroton siivous
             </Link>
             <Link
               href="/blogi"
               className="block py-2 text-gray-700 hover:text-[#27ae60]"
               onClick={() => setIsMenuOpen(false)}
             >
-              {translations.navigation.blog}
+              Blogi
             </Link>
             <Link
               href="/ota-yhteytta"
               className="block py-2 bg-[#27ae60] text-white px-4 rounded-lg hover:bg-[#219a54] my-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              {translations.navigation.contact}
+              Ota yhteyttä
             </Link>
           </div>
         )}

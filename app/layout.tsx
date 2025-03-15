@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
-import { LanguageProvider } from "./context/LanguageContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,14 +20,15 @@ export default function RootLayout({
     <html lang="fi">
       <head>
         <title>Sarker Siivous</title>
-        <meta name="description" content="Ammattimaista siivouspalvelua Helsingissä" />
+        <meta
+          name="description"
+          content="Ammattimaista siivouspalvelua Helsingissä"
+        />
       </head>
       <body className={inter.className}>
-        <LanguageProvider>
-          <Navigation />
-          <main className="pt-16">{children}</main>
-          <Footer />
-        </LanguageProvider>
+        <Navigation />
+        <main className="pt-16 bg-white">{children}</main>
+        <Footer />
       </body>
     </html>
   );

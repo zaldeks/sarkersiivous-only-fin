@@ -1,42 +1,40 @@
-'use client';
-
-import { useLanguage } from '../context/LanguageContext';
-import Link from 'next/link';
-import { CheckIcon, CalendarDaysIcon, HandRaisedIcon, SparklesIcon, CreditCardIcon, MapPinIcon } from '@heroicons/react/24/solid';
-import Image from 'next/image';
+import Link from "next/link";
+import {
+  CheckIcon,
+  CalendarDaysIcon,
+  HandRaisedIcon,
+  SparklesIcon,
+  CreditCardIcon,
+  MapPinIcon,
+} from "@heroicons/react/24/solid";
+import Image from "next/image";
 
 export default function Services() {
-  const { translations } = useLanguage();
-
-  if (!translations) {
-    return null;
-  }
-
   const residentialServices = [
-    'Pölyjen pyyhintä ja imurointi',
-    'Lattioiden pesu',
-    'Kylpyhuoneen ja WC:n siivous',
-    'Keittiön siivous',
-    'Vuodevaatteiden vaihto',
-    'Ikkunalautojen pyyhintä'
+    "Pölyjen pyyhintä ja imurointi",
+    "Lattioiden pesu",
+    "Kylpyhuoneen ja WC:n siivous",
+    "Keittiön siivous",
+    "Vuodevaatteiden vaihto",
+    "Ikkunalautojen pyyhintä",
   ];
 
   const windowServices = [
-    'Ikkunoiden sisä- ja ulkopinnat',
-    'Karmit ja puitteet',
-    'Ikkunalaudat',
-    'Sälekaihtimet',
-    'Turvallinen korkealla työskentely',
-    'Ympärivuotinen palvelu'
+    "Ikkunoiden sisä- ja ulkopinnat",
+    "Karmit ja puitteet",
+    "Ikkunalaudat",
+    "Sälekaihtimet",
+    "Turvallinen korkealla työskentely",
+    "Ympärivuotinen palvelu",
   ];
 
   const specialServices = [
-    'Muuttosiivoukset',
-    'Rakennussiivoukset',
-    'Suursiivous',
-    'Desinfiointi',
-    'Hajunpoisto',
-    'Allergiasiivoukset'
+    "Muuttosiivoukset",
+    "Rakennussiivoukset",
+    "Suursiivous",
+    "Desinfiointi",
+    "Hajunpoisto",
+    "Allergiasiivoukset",
   ];
 
   return (
@@ -56,11 +54,9 @@ export default function Services() {
         {/* Hero Content */}
         <div className="relative z-10 h-full flex items-center justify-center">
           <div className="text-center text-white px-4">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              {translations.ourServices}
-            </h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">Palvelumme</h1>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-              {translations.servicesHeroDesc}
+              Tarjoamme monipuolisia siivouspalveluita koteihin ja yrityksille
             </p>
           </div>
         </div>
@@ -80,8 +76,11 @@ export default function Services() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-4">{translations.residentialCleaning}</h3>
-                <p className="text-gray-600 mb-6">{translations.residentialDesc}</p>
+                <h3 className="text-xl font-semibold mb-4">Kodin siivous</h3>
+                <p className="text-gray-600 mb-6">
+                  Ammattitaitoista kodin siivousta joustavilla aikatauluilla.
+                  Räätälöimme palvelun tarpeidesi mukaan.
+                </p>
                 <div className="space-y-3 mb-6">
                   {residentialServices.map((service, index) => (
                     <div key={index} className="flex items-start">
@@ -94,7 +93,7 @@ export default function Services() {
                   href="/ota-yhteytta"
                   className="inline-block bg-[#27ae60] hover:bg-[#219a54] text-white font-medium py-2 px-6 rounded-full transition-colors"
                 >
-                  {translations.getQuote}
+                  Pyydä tarjous
                 </Link>
               </div>
             </div>
@@ -109,8 +108,11 @@ export default function Services() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-4">{translations.windowCleaning}</h3>
-                <p className="text-gray-600 mb-6">{translations.windowDesc}</p>
+                <h3 className="text-xl font-semibold mb-4">Ikkunan pesu</h3>
+                <p className="text-gray-600 mb-6">
+                  Tehokasta ja perusteellista ikkunoiden pesua ammattimaisilla
+                  välineillä. Turvallista työskentelyä myös korkeissa kohteissa.
+                </p>
                 <div className="space-y-3 mb-6">
                   {windowServices.map((service, index) => (
                     <div key={index} className="flex items-start">
@@ -123,7 +125,7 @@ export default function Services() {
                   href="/ota-yhteytta"
                   className="inline-block bg-[#27ae60] hover:bg-[#219a54] text-white font-medium py-2 px-6 rounded-full transition-colors"
                 >
-                  {translations.getQuote}
+                  Pyydä tarjous
                 </Link>
               </div>
             </div>
@@ -138,8 +140,11 @@ export default function Services() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-4">{translations.specialCleaning}</h3>
-                <p className="text-gray-600 mb-6">{translations.specialDesc}</p>
+                <h3 className="text-xl font-semibold mb-4">Erikoispuhdistus</h3>
+                <p className="text-gray-600 mb-6">
+                  Erityistä huomiota ja ammattitaitoa vaativat kohteet.
+                  Räätälöidyt ratkaisut haastaviin siivoustarpeisiin.
+                </p>
                 <div className="space-y-3 mb-6">
                   {specialServices.map((service, index) => (
                     <div key={index} className="flex items-start">
@@ -152,7 +157,7 @@ export default function Services() {
                   href="/ota-yhteytta"
                   className="inline-block bg-[#27ae60] hover:bg-[#219a54] text-white font-medium py-2 px-6 rounded-full transition-colors"
                 >
-                  {translations.getQuote}
+                  Pyydä tarjous
                 </Link>
               </div>
             </div>
@@ -165,10 +170,10 @@ export default function Services() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {translations.processTitle}
+              Miten toimimme
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              {translations.processDesc}
+              Helppo ja selkeä prosessi laadukkaaseen siivoukseen
             </p>
           </div>
 
@@ -179,14 +184,15 @@ export default function Services() {
                 <div className="w-16 h-16 bg-[#27ae60] rounded-full flex items-center justify-center text-white mx-auto mb-4">
                   <CalendarDaysIcon className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">
-                  {translations.step1Title}
-                </h3>
+                <h3 className="text-xl font-semibold mb-3">Varaa aika</h3>
                 <p className="text-gray-600">
-                  {translations.step1Desc}
+                  Valitse sinulle sopiva ajankohta
                 </p>
               </div>
-              <div className="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-[#27ae60] -translate-y-1/2 transform" style={{ width: 'calc(100% - 2rem)' }}></div>
+              <div
+                className="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-[#27ae60] -translate-y-1/2 transform"
+                style={{ width: "calc(100% - 2rem)" }}
+              ></div>
             </div>
 
             {/* Step 2 */}
@@ -195,14 +201,15 @@ export default function Services() {
                 <div className="w-16 h-16 bg-[#27ae60] rounded-full flex items-center justify-center text-white mx-auto mb-4">
                   <HandRaisedIcon className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">
-                  {translations.step2Title}
-                </h3>
+                <h3 className="text-xl font-semibold mb-3">Vahvistus</h3>
                 <p className="text-gray-600">
-                  {translations.step2Desc}
+                  Saat vahvistuksen ja tarkat ohjeet
                 </p>
               </div>
-              <div className="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-[#27ae60] -translate-y-1/2 transform" style={{ width: 'calc(100% - 2rem)' }}></div>
+              <div
+                className="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-[#27ae60] -translate-y-1/2 transform"
+                style={{ width: "calc(100% - 2rem)" }}
+              ></div>
             </div>
 
             {/* Step 3 */}
@@ -211,14 +218,15 @@ export default function Services() {
                 <div className="w-16 h-16 bg-[#27ae60] rounded-full flex items-center justify-center text-white mx-auto mb-4">
                   <SparklesIcon className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">
-                  {translations.step3Title}
-                </h3>
+                <h3 className="text-xl font-semibold mb-3">Siivous</h3>
                 <p className="text-gray-600">
-                  {translations.step3Desc}
+                  Ammattilaisemme hoitavat siivouksen
                 </p>
               </div>
-              <div className="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-[#27ae60] -translate-y-1/2 transform" style={{ width: 'calc(100% - 2rem)' }}></div>
+              <div
+                className="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-[#27ae60] -translate-y-1/2 transform"
+                style={{ width: "calc(100% - 2rem)" }}
+              ></div>
             </div>
 
             {/* Step 4 */}
@@ -227,11 +235,9 @@ export default function Services() {
                 <div className="w-16 h-16 bg-[#27ae60] rounded-full flex items-center justify-center text-white mx-auto mb-4">
                   <CreditCardIcon className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">
-                  {translations.step4Title}
-                </h3>
+                <h3 className="text-xl font-semibold mb-3">Tarkistus</h3>
                 <p className="text-gray-600">
-                  {translations.step4Desc}
+                  Varmistamme että olet tyytyväinen
                 </p>
               </div>
             </div>
@@ -242,7 +248,7 @@ export default function Services() {
               href="/ota-yhteytta"
               className="inline-flex items-center justify-center bg-[#27ae60] hover:bg-[#219a54] text-white font-medium py-3 px-8 rounded-full transition-colors text-lg"
             >
-              {translations.getQuote}
+              Pyydä tarjous
             </Link>
           </div>
         </div>
@@ -270,19 +276,27 @@ export default function Services() {
             <div className="order-1 md:order-2">
               <div className="bg-white p-8 rounded-lg shadow-md">
                 <MapPinIcon className="w-12 h-12 text-[#27ae60] mb-4" />
-                <h2 className="text-3xl font-bold mb-4">
-                  {translations.serviceAreaTitle}
-                </h2>
+                <h2 className="text-3xl font-bold mb-4">Palvelualueemme</h2>
                 <p className="text-gray-600 mb-4">
-                  {translations.serviceAreaDesc}
+                  Tarjoamme siivouspalveluja pääkaupunkiseudulla'
                 </p>
                 <div className="space-y-2">
-                  {translations.serviceAreas.map((city: string, index: number) => (
-                    <div key={index} className="flex items-center">
-                      <CheckIcon className="w-5 h-5 text-[#27ae60] mr-2" />
-                      <span className="text-gray-700">{city}</span>
-                    </div>
-                  ))}
+                  <div className="flex items-center">
+                    <CheckIcon className="w-5 h-5 text-[#27ae60] mr-2" />
+                    <span className="text-gray-700">Helsinki</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckIcon className="w-5 h-5 text-[#27ae60] mr-2" />
+                    <span className="text-gray-700">Espoo</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckIcon className="w-5 h-5 text-[#27ae60] mr-2" />
+                    <span className="text-gray-700">Vantaa</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckIcon className="w-5 h-5 text-[#27ae60] mr-2" />
+                    <span className="text-gray-700">Kauniainen</span>
+                  </div>
                 </div>
               </div>
             </div>
