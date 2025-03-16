@@ -234,9 +234,7 @@ export default function Home() {
       {/* Price Calculator Section */}
       <section className="w-full bg-gray-50 py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            <PriceCalculator />
-          </div>
+          <div className="max-w-7xl mx-auto"></div>
         </div>
       </section>
 

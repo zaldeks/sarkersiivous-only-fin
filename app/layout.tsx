@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,13 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fi">
-      <head>
-        <title>Sarker Siivous</title>
-        <meta
-          name="description"
-          content="Ammattimaista siivouspalvelua Helsingissä"
-        />
-      </head>
+      <Head>
+        <link rel="icon" href="/icon.ico" />
+      </Head>
       <body className={inter.className}>
         <Navigation />
         <main className="pt-16 bg-white">{children}</main>
