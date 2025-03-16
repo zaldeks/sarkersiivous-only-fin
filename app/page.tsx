@@ -6,19 +6,6 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between">
       {/* Hero Section */}
       <div className="relative w-full h-[600px]">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/hero/hero-bg.jpg"
-            alt="Professional cleaning service"
-            width={1920}
-            height={1080}
-            className="w-full h-full object-cover"
-            priority
-            quality={100}
-          />
-        </div>
-
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/30"></div>
 
@@ -234,7 +221,9 @@ export default function Home() {
       {/* Price Calculator Section */}
       <section className="w-full bg-gray-50 py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto"></div>
+          <div className="max-w-7xl mx-auto">
+            <PriceCalculator />
+          </div>
         </div>
       </section>
 

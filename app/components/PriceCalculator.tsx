@@ -13,14 +13,8 @@ const PriceCalculator = ({
   initialSize = "20-50",
   onChange,
 }: PriceCalculatorProps) => {
-  const [mounted, setMounted] = useState(false);
   const [service, setService] = useState(initialService);
   const [size, setSize] = useState(initialSize);
-
-  // Handle client-side mounting
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Update parent component when values change
   useEffect(() => {

@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function Contact() {
-  const [mounted, setMounted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
@@ -17,11 +16,6 @@ export default function Contact() {
     service: "basic",
     size: "20-50",
   });
-
-  // Handle client-side mounting
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Calculate time based on service and size
   const calculateTime = (size: string) => {
@@ -140,11 +134,6 @@ export default function Contact() {
       [name]: value,
     }));
   };
-
-  // Wait for client-side hydration
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <>
