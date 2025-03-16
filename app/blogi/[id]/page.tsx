@@ -9,13 +9,11 @@ export default function BlogPost() {
   const blog = blogs.find((blog) => blog.id === params.id);
 
   if (!blog) {
-    return (
-      <div className="pt-16 py-24 px-4 text-center">Blogia ei löytynyt.</div>
-    );
+    return <div className=" py-24 px-4 text-center">Blogia ei löytynyt.</div>;
   }
 
   return (
-    <main className="pt-16">
+    <main>
       {/* Blog Post Header */}
       <section className="bg-[#27ae60] text-white py-16">
         <div className="max-w-4xl mx-auto px-4">

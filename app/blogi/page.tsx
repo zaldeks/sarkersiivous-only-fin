@@ -4,7 +4,7 @@ import { blogs } from "../data/blogs";
 
 export default function BlogPage() {
   return (
-    <main className="pt-16">
+    <main>
       {/* Blog Hero Section */}
       <section className="bg-[#27ae60] text-white py-24">
         <div className="max-w-6xl mx-auto px-4">

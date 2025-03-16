@@ -12,7 +12,7 @@ export default function About() {
   };
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-[50vh]">
         {/* Hero Background */}
